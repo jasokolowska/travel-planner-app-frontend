@@ -1,0 +1,11 @@
+<div class="inner-form">
+    <div class="input-field first-wrap">
+        <input #destination id="destination" type="text" placeholder="Where you want to go?" />
+    </div>
+    <div class="input-field first-wrap">
+        <input #origin id="origin" type="text" placeholder="Where are you now?" />
+    </div>
+    <div class="input-field third-wrap">
+        <button (click)="searchRoutes(destination.value, origin.value)" class="btn-search" type="button">Search</button>
+    </div>
+</div>
