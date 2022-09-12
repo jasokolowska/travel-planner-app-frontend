@@ -19,6 +19,7 @@ export class SearchBarComponent implements OnInit {
     console.log('Origin: ' + origin); 
     
     // TODO 2: redirect to search results page
+    this.router.navigate(['search']);
 
   }
 }
