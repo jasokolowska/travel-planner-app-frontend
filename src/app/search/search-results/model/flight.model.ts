@@ -1,4 +1,6 @@
-export interface Route{
+import { Time } from "@angular/common";
+
+export interface Flight{
 
     departureAirport: string;
     destinationAirport: string;

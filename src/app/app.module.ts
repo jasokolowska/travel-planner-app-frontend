@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './navigation/nav-bar/nav-bar.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
 import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SearchBarComponent } from './search/search-bar/search-bar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
