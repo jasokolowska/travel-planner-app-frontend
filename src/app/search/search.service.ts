@@ -1,34 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Flight } from './search-results/model/flight.model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   searchRoute(destination: string, origin: string): Observable<Flight[]>{
-    return of(FLIGHTS);
+    let params = {
+      destination,
+      origin
+    }
+    return this.http.get<Flight[]>(`http://localhost:8089/api/routes`, {params})
   }
 }
-
-const FLIGHTS: Flight[] = [
-  { departureAirport: 'Londyn',
-    destinationAirport: 'Barcelona',
-    departureDate: new Date(),
-    price: 199,
-    link: 'https://skyscanner.com'},
-    { departureAirport: 'Londyn',
-    destinationAirport: 'Barcelona',
-    departureDate: new Date(),
-    price: 599,
-    link: 'https://ryanair.com'},
-    { departureAirport: 'Londyn',
-    destinationAirport: 'Barcelona',
-    departureDate: new Date(),
-    price: 701,
-    link: 'https://wizzair.com'},
-
-];

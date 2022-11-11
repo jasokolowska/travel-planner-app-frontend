@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Flight } from '../search-results/model/flight.model';
-import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,6 +9,10 @@ import { SearchService } from '../search.service';
 })
 export class SearchBarComponent implements OnInit {
 
+  searchForm = new FormGroup({
+    destination: new FormControl(''),
+    origin: new FormControl('')
+  });
 
   constructor(private router: Router) { }
 
@@ -17,6 +20,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchRoutes(searchForm: any){
-    this.router.navigate(['/search', {destination: searchForm.destination, origin: searchForm.origin}])
+    this.router.navigate(['/search'], {queryParams: {destination: searchForm.value.destination, origin: searchForm.value.origin}})
   }
 }

@@ -23,7 +23,10 @@ export class SearchResultsComponent implements OnInit {
 
   searchRoutes(destination: string, origin: string){
     this.searchService.searchRoute(destination, origin).subscribe(
-      data => {this.flights = data;}
+      data => {
+        console.log(data);
+        this.flights = data;
+      }
     )
   }
 }
