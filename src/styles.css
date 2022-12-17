@@ -1,4 +1,3 @@
-
 html {
     line-height: 1.15;
     /* 1 */
@@ -558,6 +557,23 @@ html {
   
   .s01 form .inner-form .input-field.third-wrap .btn-search:hover {
     background: #2d62d3;
+  }
+
+  .s01 form .inner-form .input-field.third-wrap .btn-search-advanced {
+    height: 70%;
+    width: 100%;
+    background: transparent;
+    white-space: nowrap;
+    border-radius: .5px;
+    font-size: 13px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .s01 form .inner-form .input-field.third-wrap .btn-search-advanced:hover {
+    color: #2d62d3;
   }
   
   @media screen and (max-width: 992px) {

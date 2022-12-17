@@ -1,4 +1,4 @@
-<div class="inner-form">
+<div class="inner-form card">
   <table class="table table-background">
     <tr>
       <th>Nearest Airport</th>
@@ -14,7 +14,7 @@
         <td>{{flight.departure | date: 'short'}}</td>
         <td>{{flight.arrival | date: 'short'}}</td>
         <td>{{flight.price | currency: 'EUR'}}</td>
-        <td><a href={{flight.link}}></a></td>
+        <td><a href={{flight.link}}>Link</a></td>
     </tr>
   </table>
 

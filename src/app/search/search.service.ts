@@ -1,21 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Flight } from './search-results/model/flight.model';
 
+import { Observable, of } from 'rxjs';
+import { FlightRequest } from './search-results/model/flight-request.model';
+import { FlightResponse } from './search-results/model/flight-response.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SearchService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  searchRoute(destination: string, origin: string): Observable<Flight[]>{
-    let params = {
-      destination,
-      origin
-    }
-    return this.http.get<Flight[]>(`http://localhost:8089/api/routes`, {params})
+  searchFlight(flightRequest: FlightRequest ): Observable<FlightResponse[]> {
+    return this.http.post<FlightResponse[]>(`http://localhost:8089/api/routes`, 
+      flightRequest);
   }
 }
