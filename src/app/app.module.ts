@@ -1,38 +1,26 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './app-routes';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {RouterModule} from '@angular/router';
 import {ButtonModule} from 'primeng/button';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NavBarComponent } from './navigation/nav-bar/nav-bar.component';
-
-import { SearchBarComponent } from './search/search-bar/search-bar.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { TestComponent } from './search/test/test.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FlightSearchModule} from './flight-search/flight-search.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavBarComponent,
-    SearchResultsComponent,
-    SearchBarComponent,
-    TestComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    FlightSearchModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot([]),
     // PrimeNg
-    ButtonModule
+    ButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}

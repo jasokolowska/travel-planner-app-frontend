@@ -1,0 +1,20 @@
+<div class="inner-form card">
+  <p-table class="table table-background" loadingIcon="pi-circle-o-notch">
+    <tr>
+      <th>Nearest Airport</th>
+      <th>Destination Airport</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+      <th>Price</th>
+      <th>Link</th>
+    </tr>
+    <tr *ngFor="let flight of flights">
+      <td>{{ flight.cityFrom }}</td>
+      <td>{{ flight.cityTo }}</td>
+      <td>{{ flight.departure | date : 'short' }}</td>
+      <td>{{ flight.arrival | date : 'short' }}</td>
+      <td>{{ flight.price | currency : 'EUR' }}</td>
+      <td><a href="{{ flight.link }}">Link</a></td>
+    </tr>
+  </p-table>
+</div>

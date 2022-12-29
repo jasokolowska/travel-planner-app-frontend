@@ -1,0 +1,7 @@
+{
+  "ast": null,
+  "code": "import { CommonModule } from '@angular/common';\nimport { RouterModule } from '@angular/router';\nimport { appRoutes } from './app-routes';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { TableModule } from 'primeng/table';\nimport * as i0 from \"@angular/core\";\nimport * as i1 from \"@angular/router\";\nexport let FlightSearchModule = /*#__PURE__*/(() => {\n  class FlightSearchModule {}\n\n  FlightSearchModule.ɵfac = function FlightSearchModule_Factory(t) {\n    return new (t || FlightSearchModule)();\n  };\n\n  FlightSearchModule.ɵmod = /*@__PURE__*/i0.ɵɵdefineNgModule({\n    type: FlightSearchModule\n  });\n  FlightSearchModule.ɵinj = /*@__PURE__*/i0.ɵɵdefineInjector({\n    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule.forChild(appRoutes), //primeNg\n    TableModule]\n  });\n  return FlightSearchModule;\n})();",
+  "map": null,
+  "metadata": {},
+  "sourceType": "module"
+}

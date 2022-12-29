@@ -1,0 +1,7 @@
+{
+  "ast": null,
+  "code": "import { SearchBarComponent } from './components/search-bar/search-bar.component';\nimport { SearchResultsComponent } from './components/search-results/search-results.component';\nexport const appRoutes = [{\n  path: 'search',\n  component: SearchResultsComponent\n}, {\n  path: 'home',\n  component: SearchBarComponent\n}, {\n  path: '',\n  redirectTo: 'home',\n  pathMatch: 'full'\n}, {\n  path: '**',\n  redirectTo: 'home',\n  pathMatch: 'full'\n}];",
+  "map": null,
+  "metadata": {},
+  "sourceType": "module"
+}
