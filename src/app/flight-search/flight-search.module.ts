@@ -6,6 +6,8 @@ import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {SearchResultsComponent} from './components/search-results/search-results.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
+import { StoreModule } from '@ngrx/store';
+import { flightSearchReducer } from './store/flight-search.reducer';
 
 @NgModule({
   declarations: [SearchBarComponent, SearchResultsComponent],
@@ -14,6 +16,7 @@ import {TableModule} from 'primeng/table';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(appRoutes),
+    StoreModule.forFeature('flightSearch', flightSearchReducer),
     //primeNg
     TableModule,
   ],

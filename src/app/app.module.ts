@@ -7,6 +7,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FlightSearchModule} from './flight-search/flight-search.module';
+import {StoreModule} from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import {FlightSearchModule} from './flight-search/flight-search.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
     RouterModule.forRoot([]),
     // PrimeNg
     ButtonModule,

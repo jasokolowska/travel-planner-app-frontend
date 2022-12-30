@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import { Store } from '@ngrx/store/src';
 import {Observable} from 'rxjs';
 import {FlightResponse} from '../../model/flight-response.model';
 import {SearchService} from '../../services/search.service';
+import { loadFlightResults } from '../../store/flight-search.actions';
 
 @Component({
   selector: 'app-search-bar',
@@ -30,13 +32,14 @@ export class SearchBarComponent implements OnInit {
     days: new FormControl('', Validators.pattern('[0-9]*')),
   });
 
-  constructor(private router: Router, private searchService: SearchService) {}
+  constructor(private searchService: SearchService, private store: Store) {}
 
   ngOnInit(): void {}
 
   onSubmit(searchForm: any) {
     console.log(searchForm.value);
     this.flights$ = this.searchService.searchFlight(searchForm.value);
+    this.store.dispatch(loadFlightResults({any: {}}))
   }
 
   advancedSearch() {
