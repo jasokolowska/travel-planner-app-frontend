@@ -93,13 +93,33 @@
   </div>
 </form>
 
-<ng-container *ngIf="(flights$ | async).length > 0">
-  <app-search-results
-  [flights]="flights$ | async"
-></app-search-results>
+<ng-container *ngIf="(flights$ | async).length > 0; else noResults">
+  <div class="inner-form card text text-white" style="font-size: 30px">
+    <span
+      >{{ searchForm.value.origin }} <i class="pi-arrow-right"></i>
+      {{ searchForm.value.destination }}</span
+    >
+  </div>
+  <app-search-results [flights]="flights$ | async"></app-search-results>
 </ng-container>
+
+<ng-template #noResults>
+  <div *ngIf="(isLoadingFlights$ | async) === false">
+    <div class="text-white text-5xl text-center">
+      No results found, try again with different search parameters.
+    </div>
+    <div class="text-white text-5xl text-left">
+      <ul>
+        Deafult advanced parameters:
+        <li>next 90 days</li>
+        <li>max 3 stopovers</li>
+        <li>one way</li>
+        <li>nearest airport distance up to 500km</li>
+      </ul>
+    </div>
+  </div>
+</ng-template>
 
 <ng-container *ngIf="(isLoadingFlights$ | async) === true">
   <div id="earth" class="center"></div>
 </ng-container>
-
