@@ -12,6 +12,7 @@ export class SearchService {
   constructor(private http: HttpClient) {}
 
   searchFlight(flightRequest: FlightRequest): Observable<FlightResponse[]> {
+    console.log(flightRequest);
     return this.http.post<FlightResponse[]>(
       `http://localhost:8089/api/routes`,
       flightRequest

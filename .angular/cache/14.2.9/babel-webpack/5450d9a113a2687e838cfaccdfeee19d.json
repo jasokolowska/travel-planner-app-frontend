@@ -1,7 +1,0 @@
-{
-  "ast": null,
-  "code": "import { __decorate } from \"tslib\";\nimport { Component, Input } from '@angular/core';\nlet SearchResultsComponent = class SearchResultsComponent {\n  constructor() {\n    this.flights = [];\n  }\n\n  ngOnInit() {}\n\n  updateSearchResults(flights) {\n    this.flights = flights;\n  }\n\n};\n\n__decorate([Input()], SearchResultsComponent.prototype, \"flights\", void 0);\n\nSearchResultsComponent = __decorate([Component({\n  selector: 'app-search-results',\n  templateUrl: './search-results.component.html',\n  styleUrls: ['./search-results.component.css']\n})], SearchResultsComponent);\nexport { SearchResultsComponent };",
-  "map": null,
-  "metadata": {},
-  "sourceType": "module"
-}

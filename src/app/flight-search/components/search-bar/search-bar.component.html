@@ -92,9 +92,14 @@
     </div>
   </div>
 </form>
-<app-search-results
-  *ngIf="flights$ | async"
+
+<ng-container *ngIf="(flights$ | async).length > 0">
+  <app-search-results
   [flights]="flights$ | async"
 ></app-search-results>
+</ng-container>
 
-<!-- <div id="earth" class="center"></div> -->
+<ng-container *ngIf="(isLoadingFlights$ | async) === true">
+  <div id="earth" class="center"></div>
+</ng-container>
+

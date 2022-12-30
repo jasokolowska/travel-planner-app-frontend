@@ -9,7 +9,7 @@ export interface State {
 
 export const initialState: State = {
     searchFlightResults: [],
-    loadingsearchFlightResults: false
+    loadingsearchFlightResults: undefined
 }
 
 export const flightSearchReducer = createReducer(

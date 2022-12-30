@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import { Store } from '@ngrx/store/src';
-import {Observable} from 'rxjs';
-import {FlightResponse} from '../../model/flight-response.model';
+import { Store } from '@ngrx/store';
+import { FlightRequest } from '../../model/flight-request.model';
 import {SearchService} from '../../services/search.service';
 import { loadFlightResults } from '../../store/flight-search.actions';
+import { isLoadingSearchFlightResults, searchFlightResults } from '../../store/flight-search.selector';
 
 @Component({
   selector: 'app-search-bar',
@@ -13,7 +12,9 @@ import { loadFlightResults } from '../../store/flight-search.actions';
   styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
-  flights$: Observable<FlightResponse[]>;
+  flights$ = this.store.select(searchFlightResults);
+  isLoadingFlights$ = this.store.select(isLoadingSearchFlightResults);
+
   isAdvancedSearch: boolean = false;
 
   searchForm = new FormGroup({
@@ -34,12 +35,13 @@ export class SearchBarComponent implements OnInit {
 
   constructor(private searchService: SearchService, private store: Store) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit(searchForm: any) {
     console.log(searchForm.value);
-    this.flights$ = this.searchService.searchFlight(searchForm.value);
-    this.store.dispatch(loadFlightResults({any: {}}))
+    const searchParameters: FlightRequest = searchForm.value;
+    this.store.dispatch(loadFlightResults({searchParamters: searchParameters}));
   }
 
   advancedSearch() {

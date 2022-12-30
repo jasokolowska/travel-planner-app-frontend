@@ -1,7 +1,0 @@
-{
-  "ast": null,
-  "code": "import { __decorate } from \"tslib\";\nimport { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\nimport { appRoutes } from './app-routes';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { NavBarComponent } from './navigation/nav-bar/nav-bar.component';\nimport { SearchBarComponent } from './search/search-bar/search-bar.component';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { HttpClientModule } from '@angular/common/http';\nimport { TestComponent } from './search/test/test.component';\nimport { SearchResultsComponent } from './search/search-results/search-results.component';\nlet AppModule = class AppModule {};\nAppModule = __decorate([NgModule({\n  declarations: [AppComponent, NavBarComponent, SearchResultsComponent, SearchBarComponent, TestComponent],\n  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes), // PrimeNg\n  Butto],\n  providers: [],\n  bootstrap: [AppComponent]\n})], AppModule);\nexport { AppModule };",
-  "map": null,
-  "metadata": {},
-  "sourceType": "module"
-}
