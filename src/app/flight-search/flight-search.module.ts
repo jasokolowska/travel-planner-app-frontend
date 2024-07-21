@@ -11,6 +11,13 @@ import { flightSearchReducer } from './store/flight-search.reducer';
 import { SearchService } from './services/search.service';
 import { EffectsModule } from '@ngrx/effects';
 import { SearchFlightsEffect } from './store/flight-search.effect';
+import { CalendarModule } from 'primeng/calendar';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+
+
 
 @NgModule({
   declarations: [SearchBarComponent, SearchResultsComponent],
@@ -23,6 +30,11 @@ import { SearchFlightsEffect } from './store/flight-search.effect';
     EffectsModule.forFeature([SearchFlightsEffect]),
     //primeNg
     TableModule,
+    CalendarModule,
+    CheckboxModule,
+    ProgressSpinnerModule,
+    ButtonModule,
+    InputTextModule
   ], providers: [SearchService]
 })
 export class FlightSearchModule {}

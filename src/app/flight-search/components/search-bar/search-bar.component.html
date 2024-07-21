@@ -1,125 +1,157 @@
-<form
-  [formGroup]="searchForm"
-  (ngSubmit)="onSubmit(searchForm)"
-  autocomplete="off"
->
-  <div class="inner-form">
-    <div class="input-field first-wrap">
-      <input
-        name="destination"
-        formControlName="destination"
-        id="destination"
-        type="text"
-        placeholder="Where you want to go?"
-      />
-    </div>
-    <div class="input-field first-wrap">
-      <input
-        name="origin"
-        formControlName="origin"
-        id="origin"
-        type="text"
-        placeholder="Where are you now?"
-      />
-    </div>
-    <div class="input-field third-wrap">
-      <button type="submit" class="btn-search">Search</button>
-      <button
-        *ngIf="!isAdvancedSearch"
-        class="btn-search-advanced"
-        type="button"
-        (click)="advancedSearch()"
+<div class="grid p-8 text-white">
+  <h1 class="col-12">Discover the World</h1>
+  <form
+    [formGroup]="searchForm"
+    (ngSubmit)="onSubmit(searchForm)"
+    autocomplete="off"
+  >
+    <div class="col-12 bg-black-alpha-40 p-2 border-round-lg">
+      <div class="col-12 grid font-normal border-round-lg">
+        <label
+          class="col-4 flex justify-content-end flex-wrap"
+          for="destination"
+          >Where do you want to go?</label
+        >
+        <input
+          class="col-8"
+          name="destination"
+          formControlName="destination"
+          id="destination"
+          type="text"
+          pInputText
+          placeholder="Enter your destination"
+        />
+      </div>
+      <div class="col-12 grid font-normal border-round-lg">
+        <label for="origin" class="col-4 flex justify-content-end flex-wrap"
+          >Where are you now?</label
+        >
+        <input
+          class="col-8"
+          name="origin"
+          formControlName="origin"
+          id="origin"
+          type="text"
+          pInputText
+          placeholder="Enter your current location"
+        />
+      </div>
+      <div class="col-12 grid font-normal border-round-lg">
+        <label for="date-from" class="col-4 flex justify-content-end"
+          >In what time period?</label
+        >
+        <div class="col-8 p-0 flex flex-wrap justify-content-between">
+          <p-calendar
+            class="col-6 pl-0"
+            styleClass="w-full"
+            name="dateFrom"
+            formControlName="dateFrom"
+            id="date-from"
+            placeholder="From"
+            dateFormat="yy-mm-dd"
+          ></p-calendar>
+          <p-calendar
+            class="col-6 pr-0"
+            styleClass="w-full"
+            name="dateTo"
+            formControlName="dateTo"
+            id="date-to"
+            placeholder="To"
+            dateFormat="yy-mm-dd"
+          ></p-calendar>
+        </div>
+      </div>
+
+      <div class="col-12 grid font-normal border-round-lg">
+        <label for="stopovers" class="col-4 flex justify-content-end flex-wrap"
+          >Max stopovers</label
+        >
+        <input
+          class="col-8"
+          name="stopovers"
+          formControlName="stopovers"
+          id="stopovers"
+          type="number"
+          pInputText
+          placeholder="Enter max stopovers"
+        />
+      </div>
+
+      <div class="col-12 grid font-normal border-round-lg">
+        <label
+          for="two-way-trip"
+          class="col-4 flex justify-content-end flex-wrap"
+          >Is it 2-way trip?</label
+        >
+        <p-checkbox
+          class="col-8"
+          name="two-way-trip"
+          formControlName="twoWayTrip"
+          id="trip-type-btn"
+          [binary]="true"
+        ></p-checkbox>
+      </div>
+
+      <div
+        class="col-12 grid font-normal border-round-lg"
+        *ngIf="searchForm.value.twoWayTrip"
       >
-        Advanced Search
-      </button>
-      <button
-        *ngIf="isAdvancedSearch"
-        class="btn-search-advanced"
-        type="button"
-        (click)="advancedSearch()"
-      >
-        Simple Search
-      </button>
+        <label for="days" class="col-4 flex justify-content-end flex-wrap"
+          >How many days you want to be there?</label
+        >
+        <input
+          class="col-8"
+          name="days"
+          formControlName="days"
+          id="days"
+          type="number"
+          placeholder="Enter number of days"
+          pInputText
+        />
+      </div>
+      <div class="col-12 grid">
+        <div class="col-4 font-normal border-round-lg">
+          <!-- Placeholder -->
+        </div>
+        <div class="col-8 pl-0 font-normal border-round-lg">
+          <p-button
+            type="submit"
+            styleClass="flex justify-content-center flex-wrap ml-0 w-full shadow-8"
+            >Search</p-button
+          >
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="inner-form" *ngIf="isAdvancedSearch">
-    <div class="input-field">
-      <label for="date-from" style="color: #fff">In what time period?</label>
-      <input
-        name="dateFrom"
-        formControlName="dateFrom"
-        id="date-from"
-        type="date"
-      />
-    </div>
-    <div class="input-field">
-      <label for="date-from" style="color: #fff"></label>
-      <input name="dateTo" formControlName="dateTo" id="date-to" type="date" />
-    </div>
+  </form>
+  <div class="col-7 flex justify-content-center flex-wrap">
+    <ng-container *ngIf="(flights$ | async).length > 0; else noResults">
+      <app-search-results [flights]="flights$ | async"></app-search-results>
+    </ng-container>
 
-    <div class="input-field">
-      <label for="stopovers" style="color: #fff"></label>
-      <input
-        name="stopovers"
-        formControlName="stopovers"
-        id="stopovers"
-        type="number"
-        placeholder="Max stopovers"
-      />
-    </div>
-    <div class="input-field">
-      <label for="two-way-trip" style="color: #fff">Two-way trip</label>
-      <input
-        name="two-way-trip"
-        formControlName="twoWayTrip"
-        id="trip-type-btn"
-        type="checkbox"
-      />
-    </div>
-    <div
-      class="input-field"
-      style="display: inline-block"
-      *ngIf="searchForm.value.twoWayTrip"
-    >
-      <label for="days" style="color: #fff"></label>
-      <input
-        name="days"
-        formControlName="days"
-        id="days"
-        type="number"
-        placeholder="How many days you want to be there?"
-      />
-    </div>
+    <ng-template #noResults>
+      <div *ngIf="(isLoadingFlights$ | async) === false">
+        <div class="no-results">
+          No results found, try again with different search parameters.
+        </div>
+        <div class="no-results-details">
+          <ul>
+            Default advanced parameters:
+            <li>next 90 days</li>
+            <li>max 3 stopovers</li>
+            <li>one way</li>
+            <li>nearest airport distance up to 500km</li>
+          </ul>
+        </div>
+      </div>
+    </ng-template>
   </div>
-</form>
-
-<ng-container *ngIf="(flights$ | async).length > 0; else noResults">
-  <div class="inner-form card text text-white" style="font-size: 30px">
-    <span
-      >{{ searchForm.value.origin }} <i class="pi-arrow-right"></i>
-      {{ searchForm.value.destination }}</span
-    >
-  </div>
-  <app-search-results [flights]="flights$ | async"></app-search-results>
-</ng-container>
-
-<ng-template #noResults>
-  <div *ngIf="(isLoadingFlights$ | async) === false">
-    <div class="text-white text-5xl text-center">
-      No results found, try again with different search parameters.
-    </div>
-    <div class="text-white text-5xl text-left">
-      <ul>
-        Deafult advanced parameters:
-        <li>next 90 days</li>
-        <li>max 3 stopovers</li>
-        <li>one way</li>
-        <li>nearest airport distance up to 500km</li>
-      </ul>
-    </div>
-  </div>
-</ng-template>
+</div>
 
 <ng-container *ngIf="(isLoadingFlights$ | async) === true">
-  <div id="earth" class="center"></div>
+  <div class="spinner-overlay">
+    <div
+      id="earth"
+      class="flex flex-wrap align-items-center justify-content-center"
+    ></div>
+  </div>
 </ng-container>

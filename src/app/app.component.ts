@@ -8,4 +8,6 @@ import {FlightResponse} from './flight-search/model/flight-response.model';
 })
 export class AppComponent {
   title = 'travel-planner-app-frontend';
+  username = '';
+  password = '';
 }
