@@ -4,7 +4,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 
 
@@ -15,9 +14,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
   ],
   imports: [
     CommonModule,
-    DynamicDialogModule,
     FormsModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     InputTextModule
   ]
 })
