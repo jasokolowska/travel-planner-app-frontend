@@ -29,7 +29,7 @@
     "primeicons": "^6.0.1",
     "primeng": "^16.9.1",
     "rxjs": "^7.8.2",
-    "zone.js": "^0.16.0"
+    "zone.js": "^0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.2.16",
@@ -49,6 +49,6 @@
     "ts-node": "~10.9.1",
     "tslib": "^2.4.1",
     "tslint": "~6.1.0",
-    "typescript": "^5.9.3"
+    "typescript": "5.2"
   }
 }
