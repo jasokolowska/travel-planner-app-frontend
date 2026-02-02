@@ -16,8 +16,5 @@ import { LoginComponent } from 'src/app/auth/components/login/login.component';
     ButtonModule,
   ],
   exports: [TopbarComponent],
-  entryComponents: [
-    LoginComponent
-  ]
 })
 export class TopbarModule { }
